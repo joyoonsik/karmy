@@ -7,6 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="Free HTML Templates" name="keywords" />
     <meta content="Free HTML Templates" name="description" />
+    <link rel="manifest" href="/manifest.json">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon" />
@@ -33,45 +34,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
-    <style>
-
-.timerDisplay{
-    width: 100%;
-    padding: 40px 0;
-    font-family: 'Roboto mono',monospace;
-    color: #0381bb;
-    font-size: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 5px;
-    box-shadow: 0 0 20px rgba(0,139,253,0.25);
-}
-.buttons{
-    width: 90%;
-    margin: 60px auto 0 auto;
-    display: flex;
-    justify-content: space-around;
-}
-.buttons button{
-    width: 120px;
-    height: 45px;
-    background-color: #205e94;
-    color: #ffffff;
-    border: none;
-    font-family: 'Poppins',sans-serif;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    outline: none;
-}
-.buttons button:nth-last-child(2){
-  background-color: #d23332;
-}
-.buttons button:nth-last-child(1){
-  background-color: #20b380;
-}
-    </style>
+    <link href="css/time.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -85,8 +48,8 @@
           class="navbar-brand font-weight-bold text-secondary"
           style="font-size: 50px"
         >
-          <img src="helmet.png" style="width: 50px;">
-          <span class="text-primary">KR ARMY</span>
+          <img src="helmet.png" style="width: 40px;">
+          <span style="font-size: 30px !important;" class="text-primary">KR ARMY</span>
         </a>
         <button
           type="button"
@@ -102,9 +65,9 @@
         >
           <div class="navbar-nav font-weight-bold mx-auto py-0">
             <a href="index.html" class="nav-item nav-link active">군인 체력등급 계산기</a>
-            <a href="1.html" class="nav-item nav-link">신체 밸런스 계산기</a>
             <a href="2.html" class="nav-item nav-link">1RM 계산기</a>
-            <a href="3.html" class="nav-item nav-link">추천</a>
+            <a href="3.html" class="nav-item nav-link">광고</a>
+            <a href="4.html" class="nav-item nav-link">APP</a>
           </div>
         </div>
       </nav>
@@ -158,7 +121,7 @@
     </div>
     <!-- Registration End -->
     <!-- 테스트 시작 -->
-    <div class="container-fluid py-5">
+    <div class="container-fluid py-1">
       <div class="container">
         <div style="width:100%">
           <div class="card border-0">
@@ -224,7 +187,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container pb-5">
       <div class="timerDisplay">
           00 : 00 : 000
       </div>
@@ -233,7 +196,9 @@
           <button style="margin-left: 10px; margin-right: 10px;" id="startTimer">시작</button>
           <button id="resetTimer">초기화</button>
       </div>
-  </div>
+    </div>
+    <div class="pb-5"></div>
+  
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary p-3 back-to-top"
@@ -254,120 +219,10 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/service-worker.js"></script>
+    <script src="js/result.js"></script>
     
-    <script>
-      document.getElementById("myForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // 폼 제출 막기
-    
-        // 성별과 나이를 가져옵니다.
-        const genderSelect = document.getElementById("gender");
-        const gender = genderSelect.options[genderSelect.selectedIndex].text;
-        if(gender=='남자'){
-          console.log(gender);
-        }
-        const age = document.getElementById("age").value;
-        // 테이블을 생성할 컨테이너를 가져옵니다.
-        const tableContainer = document.getElementById("table-container");
-        // 테이블 생성을 위한 HTML 코드를 작성합니다.
-        const tableHTML = `
-        <h1>특급</h1>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">종목</th>
-              <th scope="col">횟수</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">팔굽혀펴기</th>
-              <td>${gender}</td>
-            </tr>
-            <tr>
-              <th scope="row">윗몸일으키기</th>
-              <td>${age}</td>
-            </tr>
-            <tr>
-              <th scope="row">3km 달리기</th>
-              <td>12:30이하</td>
-            </tr>
-          </tbody>
-        </table>
-        <h1>1급</h1>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">종목</th>
-              <th scope="col">횟수</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">팔굽혀펴기</th>
-              <td>${gender}</td>
-            </tr>
-            <tr>
-              <th scope="row">윗몸일으키기</th>
-              <td>${age}</td>
-            </tr>
-            <tr>
-              <th scope="row">3km 달리기</th>
-              <td>12:30이하</td>
-            </tr>
-          </tbody>
-        </table>
-        <h1>2급</h1>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">종목</th>
-              <th scope="col">횟수</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">팔굽혀펴기</th>
-              <td>${gender}</td>
-            </tr>
-            <tr>
-              <th scope="row">윗몸일으키기</th>
-              <td>${age}</td>
-            </tr>
-            <tr>
-              <th scope="row">3km 달리기</th>
-              <td>12:30이하</td>
-            </tr>
-          </tbody>
-        </table>
-        <h1>3급</h1>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">종목</th>
-              <th scope="col">횟수</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">팔굽혀펴기</th>
-              <td>${gender}</td>
-            </tr>
-            <tr>
-              <th scope="row">윗몸일으키기</th>
-              <td>${age}</td>
-            </tr>
-            <tr>
-              <th scope="row">3km 달리기</th>
-              <td>12:30이하</td>
-            </tr>
-          </tbody>
-        </table>
-        `;
-    
-        // 컨테이너에 테이블을 삽입합니다.
-        tableContainer.innerHTML = tableHTML;
-      });
-    </script>
+   
 
   <script>
     document.getElementById("myForm2").addEventListener("submit", function(event) {
@@ -439,8 +294,6 @@
         let ms = milliseconds < 10 ? "00" + milliseconds : milliseconds < 100 ? "0" + milliseconds : milliseconds;
     
         timerRef.innerHTML = `${m} : ${s} : ${ms}`;
-    }
-    
-    
+    }  
         </script>
 </html>

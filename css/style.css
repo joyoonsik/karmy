@@ -657,7 +657,7 @@ pre code {
 .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl,
 .col-xl-auto {
   position: relative;
-  width: 100%;
+  width: 50%;
   padding-right: 15px;
   padding-left: 15px;
 }
@@ -6096,6 +6096,16 @@ a.close.disabled {
 
 .carousel {
   position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 15;
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  margin-right: 15%;
+  margin-left: 15%;
+  list-style: none;
 }
 
 .carousel.pointer-event {
@@ -6104,7 +6114,7 @@ a.close.disabled {
 
 .carousel-inner {
   position: relative;
-  width: 100%;
+  width: 50%;
   overflow: hidden;
 }
 

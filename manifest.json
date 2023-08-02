@@ -1,0 +1,20 @@
+{
+    "name": "My Progressive Web App",
+    "short_name": "My PWA",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#2196F3",
+    "icons": [
+        {
+            "src": "/helmet192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/helmet512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
