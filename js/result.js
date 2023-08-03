@@ -93,7 +93,7 @@ else if(gender=='여자'){
 
 
 const tableHTML = `
-<h1>특급</h1>
+<h1 class="pt-2">특급</h1>
 <table class="table table-striped">
     <thead>
     <tr>
