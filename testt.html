@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    label {
+      font-weight: bold;
+    }
+    button {
+      padding: 10px;
+      background-color: #007bff;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+  <title>나이 계산기</title>
+</head>
+<body>
+  <div class="container">
+    <h1>나이 계산기</h1>
+    <form id="ageCalculator">
+      <label for="birthdate">생년월일:</label>
+      <input type="date" id="birthdate" required>
+      <button type="button" onclick="calculateAge()">계산하기</button>
+    </form>
+    <div id="result"></div>
+  </div>
+  <script>
+    function calculateAge() {
+      const birthdate = new Date(document.getElementById("birthdate").value);
+      const today = new Date();
+      const age = today.getFullYear() - birthdate.getFullYear();
+
+      if (
+        today.getMonth() < birthdate.getMonth() ||
+        (today.getMonth() === birthdate.getMonth() && today.getDate() < birthdate.getDate())
+      ) {
+        age--;
+      }
+
+      document.getElementById("result").innerHTML = `당신의 나이는 ${age}세 입니다.`;
+    }
+  </script>
+</body>
+</html>
