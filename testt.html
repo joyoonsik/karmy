@@ -45,7 +45,12 @@
     <h1>나이 계산기</h1>
     <form id="ageCalculator">
       <label for="birthdate">생년월일:</label>
-      <input type="date" id="birthdate" required>
+      <input
+        type="date"
+        id="birthdate"
+        class="form-control border-0 py-4"
+        required
+      />
       <button type="button" onclick="calculateAge()">계산하기</button>
     </form>
     <div id="result"></div>
@@ -54,11 +59,14 @@
     function calculateAge() {
       const birthdate = new Date(document.getElementById("birthdate").value);
       const today = new Date();
-      const age = today.getFullYear() - birthdate.getFullYear();
+      let age = today.getFullYear() - birthdate.getFullYear();
+
+      const birthMonth = birthdate.getMonth();
+      const currentMonth = today.getMonth();
 
       if (
-        today.getMonth() < birthdate.getMonth() ||
-        (today.getMonth() === birthdate.getMonth() && today.getDate() < birthdate.getDate())
+        currentMonth < birthMonth ||
+        (currentMonth === birthMonth && today.getDate() < birthdate.getDate())
       ) {
         age--;
       }
